@@ -32,6 +32,14 @@ public class Compte {
 	private List<Client> clients = new ArrayList<>();
 	@OneToMany(mappedBy = "compte")
 	private List<Operation> operations = new ArrayList<>();
+	
+	public Compte() {
+	}
+
+	public Compte(String numero, double solde) {
+		this.numero = numero;
+		this.solde = solde;
+	}
 
 	public int getId() {
 		return id;

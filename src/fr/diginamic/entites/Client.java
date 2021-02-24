@@ -37,6 +37,22 @@ public class Client {
 	@Embedded
 	private Adresse adresse;
 
+	public Client() {
+	}
+
+	public Client(String nom, String prenom, LocalDate dateNaissance) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
+
+	public Client(String nom, String prenom, LocalDate dateNaissance, Adresse adresse) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adresse = adresse;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -91,6 +107,10 @@ public class Client {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+	
+	public void addCompte (Compte compte) {
+		this.getComptes().add(compte);
 	}
 
 	@Override

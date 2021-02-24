@@ -21,6 +21,13 @@ public class Banque {
 	private String nom;
 	@OneToMany(mappedBy = "banque")
 	private List<Client> clients = new ArrayList<>();
+	
+	public Banque() {
+	}
+
+	public Banque(String nom) {
+		this.nom = nom;
+	}
 
 	public int getId() {
 		return id;
@@ -45,7 +52,7 @@ public class Banque {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
