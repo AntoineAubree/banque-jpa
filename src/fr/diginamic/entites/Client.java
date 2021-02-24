@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,12 +29,85 @@ public class Client {
 	@Column(name = "date_naissance")
 	private LocalDate dateNaissance;
 	@ManyToMany
-	@JoinTable(name = "compte_client", 
-		joinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"), 
-		inverseJoinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"))
+	@JoinTable(name = "compte_client", joinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"))
 	private List<Compte> comptes = new ArrayList<>();
 	@ManyToOne
 	@JoinColumn(name = "id_banque")
 	private Banque banque;
+	@Embedded
+	private Adresse adresse;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+	public List<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(List<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
+	public Banque getBanque() {
+		return banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Client [id=");
+		builder.append(id);
+		builder.append(", nom=");
+		builder.append(nom);
+		builder.append(", prenom=");
+		builder.append(prenom);
+		builder.append(", dateNaissance=");
+		builder.append(dateNaissance);
+		builder.append(", adresse=");
+		builder.append(adresse);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
