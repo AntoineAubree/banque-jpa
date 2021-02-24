@@ -16,6 +16,7 @@ import fr.diginamic.entites.Banque;
 import fr.diginamic.entites.Client;
 import fr.diginamic.entites.Compte;
 import fr.diginamic.entites.Operation;
+import fr.diginamic.entites.Virement;
 import fr.diginamic.utils.ConfigUtils;
 
 public class Application {
@@ -46,6 +47,7 @@ public class Application {
 		
 		Operation operation1 = new Operation(LocalDateTime.of(2021, 2, 12, 18, 0), 29.68, "achat baguette");
 		Operation operation2 = new Operation(LocalDateTime.of(2021, 2, 12, 19, 0), 536.68, "achat potion");
+		Virement virement1 = new Virement(LocalDateTime.of(2021, 2, 12, 19, 0), 35.98, "remboursement", "Ron");
 
 		client3.setAdresse(adresse3);
 		client1.setBanque(banque1);
@@ -56,6 +58,7 @@ public class Application {
 		client2.setComptes(comptes2);
 		operation1.setCompte(compte1);
 		operation2.setCompte(compte1);
+		virement1.setCompte(compte1);
 		
 		client2.addCompte(compte2);
 		client2.addCompte(compte3);
@@ -83,6 +86,7 @@ public class Application {
 		
 		em.persist(operation1);
 		em.persist(operation2);
+		em.persist(virement1);
 		
 		em.close();
 
