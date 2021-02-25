@@ -27,11 +27,11 @@ public class Compte {
 	private String numero;
 	@Column(name = "solde")
 	private double solde;
+	@OneToMany(mappedBy = "compte")
+	private List<Operation> operations = new ArrayList<>();
 	@ManyToMany
 	@JoinTable(name = "compte_client", joinColumns = @JoinColumn(name = "id_compte", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "id_client", referencedColumnName = "id"))
 	private List<Client> clients = new ArrayList<>();
-	@OneToMany(mappedBy = "compte")
-	private List<Operation> operations = new ArrayList<>();
 	
 	public Compte() {
 	}
@@ -81,6 +81,11 @@ public class Compte {
 		this.operations = operations;
 	}
 
+	public void addOperation(Operation operation) {
+		this.getOperations().add(operation);
+		operation.setCompte(this);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

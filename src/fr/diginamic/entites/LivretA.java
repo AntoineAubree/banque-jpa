@@ -9,6 +9,14 @@ public class LivretA extends Compte {
 	@JoinColumn(name = "taux")
 	private double taux;
 
+	public LivretA() {
+	}
+
+	public LivretA(String numero, double solde, double taux) {
+		super(numero, solde);
+		this.taux = taux;
+	}
+
 	public double getTaux() {
 		return taux;
 	}

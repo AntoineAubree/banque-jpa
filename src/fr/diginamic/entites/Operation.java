@@ -78,7 +78,7 @@ public class Operation {
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
