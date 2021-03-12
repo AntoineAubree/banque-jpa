@@ -1,12 +1,12 @@
 package fr.diginamic.entites;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 
 @Entity
 public class LivretA extends Compte {
 
-	@JoinColumn(name = "taux")
+	@Column(name = "taux")
 	private double taux;
 
 	public LivretA() {
